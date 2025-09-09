@@ -1,0 +1,74 @@
+/* src/Metrics.css */
+.metric-box {
+  background: linear-gradient(145deg, #323840, #2a2f35);
+  border-radius: 12px;
+  padding: 15px 10px;
+  text-align: center;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3),
+    0 0 0 1px rgba(255, 255, 255, 0.05) inset;
+  transition: transform 0.2s ease-in-out;
+}
+
+.metric-box:hover {
+  transform: translateY(-3px);
+}
+
+.metric-value {
+  font-weight: 600;
+  min-height: 38px;
+  line-height: 1.1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  word-break: break-word;
+}
+
+.metric-label {
+  font-size: 0.8rem;
+  color: #a0a8b3;
+  margin-top: 8px;
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+}
+
+.bar-title {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #e0e6f0;
+  margin-bottom: 10px;
+  padding-bottom: 8px;
+  text-align: center;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.left-bar,
+.right-bar {
+  grid-row: 2 / 3; /* Align with the main video container */
+  display: flex;
+  flex-direction: column;
+  gap: 20px; /* This creates the even spacing */
+}
+
+.left-bar {
+  grid-column: 1 / 2;
+}
+
+.right-bar {
+  grid-column: 3 / 4;
+}
+
+.bottom-bar {
+  grid-column: 1 / -1; /* Span all columns */
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: stretch;
+  gap: 20px; /* This creates the even spacing */
+}
+
+/* Specific styling for Last Action to make it stand out */
+.bottom-bar .metric-box:last-child {
+  background: linear-gradient(145deg, #e53935, #b71c1c);
+  flex-grow: 1.5; /* Give it more width */
+}
