@@ -149,9 +149,14 @@ function App() {
       const avgGazeX = (rightGazeX + leftGazeX) / 2;
       const avgGazeY = (rightGazeY + leftGazeY) / 2;
 
-      // Convert to screen coordinates (normalize and scale)
-      const screenX = Math.max(0, Math.min(1, 0.5 + avgGazeX * 0.5));
-      const screenY = Math.max(0, Math.min(1, 0.5 + avgGazeY * 0.5));
+      // FIXED: Convert to screen coordinates with proper mirroring and full range
+      // For X: Flip the horizontal coordinate to match natural eye movement
+      // When you look left, gaze should appear on left side of screen
+      const screenX = Math.max(0, Math.min(1, 0.5 - avgGazeX * 0.8)); // Flipped and increased sensitivity
+      
+      // For Y: Expand the vertical range to cover full screen
+      // Increased multiplier and adjusted offset for full screen coverage
+      const screenY = Math.max(0, Math.min(1, 0.5 + avgGazeY * 1.2)); // Increased sensitivity for full range
 
       return { x: screenX, y: screenY, gazeX: avgGazeX, gazeY: avgGazeY };
     } catch (error) {
@@ -187,7 +192,8 @@ function App() {
   };
 
   const getGazeDirectionFromCoords = (gazeX, gazeY) => {
-    const threshold = 0.15;
+    // Reduced threshold for more sensitive direction detection
+    const threshold = 0.12;
     
     if (Math.abs(gazeX) < threshold && Math.abs(gazeY) < threshold) {
       return "Center";
