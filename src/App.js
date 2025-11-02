@@ -24,7 +24,7 @@ function App() {
   const gazeOverlayRef = useRef(null);
 
   const [isTracking, setIsTracking] = useState(false);
-  const [gazePoint, setGazePoint] = useState({ x: 0.5, y: 0.5 });
+  const [gazePoint, setGazePoint] = useState({ x: 0.5, y: 0.5 }); //eslint-disable-line
   const [currentQuadrant, setCurrentQuadrant] = useState(null);
   const [dwellProgress, setDwellProgress] = useState({});
   const [lastSelection, setLastSelection] = useState(null);
@@ -262,7 +262,7 @@ function App() {
       camera.start();
       setIsTracking(true);
     }
-  }, []);
+  }, []);//eslint-disable-line
 
   return (
     <div className="App">
